@@ -11,15 +11,19 @@ word = user_word.strip().replace(' ', '').lower()
 print(user_word)
 
 backward = len(word) - 1
-for n in range(0, len(word) - 1):
+esPalindromo = True
+for n in range(len(word) // 2):
     current = word[n]
     last_one = word[backward]
 
     if (current != last_one):
-        print("No es palindromo")
-        exit()
+        esPalindromo = False
+        break
     else:
         backward-=1
         continue
 
-print("Es palindromo")
+if (esPalindromo):
+    print("Es palindromo")
+else:
+    print("No es palindromo")
