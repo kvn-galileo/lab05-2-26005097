@@ -26,29 +26,46 @@ import random
 try:
     n = int(input("Ingrese N: "))
 
-    sorted_list = []
-
+    random_numbers = []
     for i in range(1, n + 1):
-        random_number = random.randint(10, 99)
+        new_random_number = random.randint(10, 99)
+        random_numbers.append(new_random_number)
 
-        if len(sorted_list) == 0:
-            sorted_list.append(i)
-            print(sorted_list)
-            continue
-        
-        resorted_list = []
-        for index in range(0, len(sorted_list) - 1):
-            current = sorted_list[index]
+        print(f"Numero #1 generado: {new_random_number}")
 
-            if random_number >= current:
-                resorted_list.append(random_number)
-            else:
-                resorted_list.insert(sorted_list.indexof(current), random_number)
+        sorted_arr = []
 
-        sorted_list = resorted_list
+        for conteo in range(0, len(random_numbers)):
+            if (len(random_numbers) <= 0):
+                break
 
-        print(sorted_list)
-        
+            current = random_numbers[0]
+            lower = current
+            index_lower = None
+
+            indice_actual = 0
+            for current_n in random_numbers:
+                if lower >= current_n:
+                    lower = current_n
+                    index_lower = indice_actual
+                indice_actual += 1
+
+            new_arr = []
+            index = 0
+            # creacion de filter
+            while index != len(random_numbers):
+                item = random_numbers[index]
+
+                if (index != index_lower):
+                    new_arr.append(item)
+
+                index += 1
+            
+            random_numbers = new_arr
+            sorted_arr.append(lower)
+
+        random_numbers = sorted_arr
+        print(random_numbers)
 
 
 except ValueError:
